@@ -21,15 +21,19 @@ exclude = [
 ]
 
 [dependencies]
-defmt = { version = "0.3.8", optional = true }
+defmt = { version = "1.0", optional = true }
 embedded-hal = "1.0.0"
 embedded-hal-async = { version = "1.0.0", optional = true }
-fixed = "1.28.0"
+fixed = "1.29"
 sensirion-i2c = "0.4"
+serde = { version = "1.0", default-features = false, features = ["derive"], optional = true }
+postcard-schema = { version = "0.2", features = ["derive"], optional = true }
 
 [features]
 defmt = ["dep:defmt"]
 embedded-hal-async = ["dep:embedded-hal-async", "sensirion-i2c/embedded-hal-async"]
+serde = ["dep:serde", "fixed/serde"]
+postcard-schema = ["dep:postcard-schema"]
 
 [package.metadata.docs.rs]
 all-features = true

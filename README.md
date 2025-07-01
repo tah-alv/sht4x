@@ -30,7 +30,11 @@ tested with the SHT40-AD1B so far.
     - Convenience methods for fixed-point conversions to milli degree Celsius
       or milli percent relative humidity which are commonly used by drivers for
       other humidity and temperature sensors from Sensirion
-- Optional support for [`defmt`](https://github.com/knurling-rs/defmt)
+- Optional support for
+   [`defmt`](https://github.com/knurling-rs/defmt),
+   [`serde`](https://github.com/serde-rs/serde), and
+   [`postcard-schema`](https://github.com/jamesmunns/postcard)
+
 
 
 ## Example

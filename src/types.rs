@@ -1,6 +1,10 @@
 use fixed::types::{I16F16, I18F14, U16F16};
 
+pub type Sht4xMeasurementType = I16F16;
+
 /// I2C adresses used by STH4x sensors.
+#[cfg_attr(feature = "postcard-schema", derive(postcard_schema::Schema))]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 #[derive(Clone, Copy, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
 #[non_exhaustive]
@@ -21,6 +25,8 @@ impl From<Address> for u8 {
 }
 
 /// Heating power to apply when activating the internal heater.
+#[cfg_attr(feature = "postcard-schema", derive(postcard_schema::Schema))]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 #[derive(Clone, Copy, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
 pub enum HeatingPower {
@@ -33,6 +39,8 @@ pub enum HeatingPower {
 }
 
 /// Duration of heating when activating the internal heater.
+#[cfg_attr(feature = "postcard-schema", derive(postcard_schema::Schema))]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 #[derive(Clone, Copy, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
 pub enum HeatingDuration {
@@ -43,17 +51,20 @@ pub enum HeatingDuration {
 }
 
 /// A measurement from the sensor in SI units.
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]
 pub struct Measurement {
     /// The measurred temperature in degree Celsius (°C).
-    temperature: I16F16,
+    pub temperature: I16F16,
     /// The measured relative humidity in percent (%).
-    humidity: I16F16,
+    pub humidity: I16F16,
 }
 
 /// The precision to request for a measurement.
 ///
 /// Higher-precision measurements take longer.
+#[cfg_attr(feature = "postcard-schema", derive(postcard_schema::Schema))]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 #[derive(Clone, Copy, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
 pub enum Precision {
@@ -63,6 +74,8 @@ pub enum Precision {
 }
 
 /// A measurement from the sensor in raw sensor data.
+#[cfg_attr(feature = "postcard-schema", derive(postcard_schema::Schema))]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]
 pub struct SensorData {

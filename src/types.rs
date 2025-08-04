@@ -1,6 +1,10 @@
-use fixed::types::{I16F16, I18F14, U16F16};
+use fixed::{
+    traits::Fixed,
+    types::{I16F16, I18F14, U16F16},
+};
 
 pub type Sht4xMeasurementType = I16F16;
+pub type Sht4xMeasurementBits = <Sht4xMeasurementType as Fixed>::Bits;
 
 /// I2C adresses used by STH4x sensors.
 #[cfg_attr(feature = "postcard-schema", derive(postcard_schema::Schema))]
